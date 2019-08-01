@@ -55,7 +55,7 @@ public class DemoController {
 
 	@RequestMapping("/towee")
 	public String towe() {
-		return "we";
+		return "wee";
 
 	}
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<link
+	href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
+	<link href="uploader.all.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h1 class="bg-warning text-white text-center">welcome</h1>
+	<form action="/upload/file " method="post" enctype="multipart/form-data">
+		<div class="mt-5 ml-5">
+			<input id="" name="myFile" type="file" placeholder="选择文件"/>
+			<button id="btn-upload" type="submit" style="width: 20%" class="btn btn-sm form-control bg-info text-white">点击上传</button>
+		<div id="task"></div>
+		</div>
+	</form>
+
+
+<script type="text/javascript" src="Q.Uploader.file.all.js"></script>
+<script>
+var upload=	new Q.Uploader({
+		url : "/upload/file",
+		target : $("#")[0], //上传按钮,可为数组 eg:[element1,element2]
+		view : $("#task")[0],
+		upName:"myfile",
+		dateType:"text",
+		on:{
+			complate:function(task){
+				alert(task.response)
+				
+			}
+		}
+	});
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<link
+	href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 class="text-center bg-warning text-white">H O M E</h1>
+	<table class="table table-striped">
+		<tr th:each="s : ${list}">
+			<td th:text="${s.id}"></td>
+			<td th:text="${s.name}"></td>
+			<td th:text="${s.sex}"></td>
+			<td th:text="${s.department}"></td>
+			<td th:text="${s.address}"></td>
+		</tr>
+	</table>
+
+	<div>
+		<div class="row">
+			<div class="col ml-2">
+				<div  class="form-inline">
+					<input id="msg" placeholder="_请输入消息" />
+					<button onclick="send()" class="btn btn-sm bg-success text-white ml-2">发送</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div> <a href="/send">AAA</a></div>
+	
+	<div> <a href="/towe">跳转test</a></div>
+	<script>
+		function send() {
+			$.ajax({
+				type : "post",
+				url : "/amqp",
+				data : {
+					msg : $("#msg").val()
+				},
+				seccess : function(data) {
+					
+					alert(data)
+				}
+			})
+		}
+	</script>
+</body>
+</html>
